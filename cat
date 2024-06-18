@@ -1,0 +1,38 @@
+#my pseudo code 
+'''
+function findCatsWithHats(n):
+    Initialize a list of n elements all set to False (hats off)
+    for k from 1 to n:
+        for i from k to n with step k:
+            Toggle the i-th element in the list
+    Initialize an empty list to store the result
+    for i from 1 to n:
+        if the i-th element is True:
+            Add i to the result list
+    Return the result list
+
+# Call the function with 100 cats and 100 rounds
+result = findCatsWithHats(100)
+print result
+'''
+#my code
+def find_cats_with_hats(n):
+    # Initialize hats list with False (no hats)
+    hats = [False] * n
+    
+    # Simulate the rounds
+    for k in range(1, n + 1):
+        for i in range(k - 1, n, k):
+            hats[i] = not hats[i]
+    
+    # Collect the indices of cats with hats
+    cats_with_hats = []
+    for i in range(n):
+        if hats[i]:
+            cats_with_hats.append(i + 1)  # +1 to adjust for 1-based indexing
+    
+    return cats_with_hats
+
+# Testing the function with 100 cats and 100 rounds
+result = find_cats_with_hats(100)
+print(result)
